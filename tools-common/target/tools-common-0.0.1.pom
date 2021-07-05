@@ -3,6 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
 
 
+
+
     <groupId>io.github.songshijun900329</groupId>
     <artifactId>tools-common</artifactId>
     <version>0.0.1</version>
@@ -21,6 +23,10 @@
         <version>2.5.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+
+
+
 
 
     <name>tools-common</name>
@@ -69,14 +75,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>5.7.3</version>
-        </dependency>
-
 
         <dependency>
             <groupId>com.sun</groupId>
@@ -208,16 +206,25 @@
                 </executions>
             </plugin>
             <!--  必须配置 sonatype-->
+<!--            <plugin>-->
+<!--                <groupId>org.sonatype.plugins</groupId>-->
+<!--                <artifactId>nexus-staging-maven-plugin</artifactId>-->
+<!--                <version>1.6.7</version>-->
+<!--                <extensions>true</extensions>-->
+<!--                <configuration>-->
+<!--                    <serverId>sonatype-nexus-staging</serverId>&lt;!&ndash; 等于上面Settings中server的id值。&ndash;&gt;-->
+<!--                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>-->
+<!--                    <autoReleaseAfterClose>true</autoReleaseAfterClose>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <version>1.6.7</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <!-- 这里的id必须要和全局配置中的release id 一致 -->
-                    <serverId>ossrh</serverId><!-- 等于Settings.xml中server的id值。-->
+                    <serverId>ossrh</serverId>
                     <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                    <!-- 如果希望发布后自动执行close和release操作，此处可以调整为true -->
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
             </plugin>
@@ -239,19 +246,28 @@
         </plugins>
     </build>
 
+<!--    <distributionManagement>-->
+<!--        <snapshotRepository>-->
+<!--            <id>sonatype-nexus-snapshots</id> &lt;!&ndash; 等于上面Settings.xml中server的id值。&ndash;&gt;-->
+<!--            <name>oss Snapshots Repository</name>-->
+<!--            <url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
+<!--        </snapshotRepository>-->
+<!--        <repository>-->
+<!--            <id>sonatype-nexus-staging</id> &lt;!&ndash; 等于上面Settings.xml中server的id值。&ndash;&gt;-->
+<!--            <name>oss Staging Repository</name>-->
+<!--            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+<!--        </repository>-->
+<!--    </distributionManagement>-->
 
-    <!-- 发布管理信息 -->
+
+
     <distributionManagement>
         <snapshotRepository>
-            <!-- 这里的id必须要和全局配置中的release id 一致 -->
-            <id>ossrh</id><!-- 等于Settings.xml中server的id值。-->
-            <!-- 这里就是在创建issue成功后，对方回复的snapshot发布地址-->
+            <id>ossrh</id><!-- 等于上面Settings.xml中server的id值。-->
             <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
-            <!-- 这里的id必须要和全局配置中的release id 一致 -->
-            <id>ossrh</id><!-- 等于Settings.xml中server的id值。-->
-            <!-- 这里就是在创建issue成功后，对方回复的release发布地址-->
+            <id>ossrh</id><!-- 等于上面Settings.xml中server的id值。-->
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
